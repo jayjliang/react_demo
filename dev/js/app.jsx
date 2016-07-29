@@ -1,24 +1,36 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var HelloWorld = React.createClass({
-	es6_test: function() {
-		return 1;
-	},
-	render: function() {
-		return (
-			<div>
-	    		<h1>hello {this.es6_test()}</h1>
-	    	</div>
-		)
-	}
-});
-
-class Test extends  React.Component {
+import { Router, Route, Link, browserHistory ,hashHistory} from 'react-router'
+class Home extends  React.Component {
   render() {
-    <div>
-
-    </div>
+    return (
+    	<div>
+    		<h1>this is Home</h1>
+    		{this.props.children}
+    	</div>
+    	
+    	);
   }
-}
-ReactDOM.render(<HelloWorld />, document.getElementById('example'));
+};
+
+class About extends  React.Component {
+  render() {
+    return <h1>this is About</h1>;
+  }
+};
+
+class NoMatch extends  React.Component {
+  render() {
+  	return <h1>this is NoFound</h1>;
+  }
+};
+
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={Home}>
+      <Route path="about" component={About}/>
+      <Route path="home" component={Home}/>
+      <Route path="*" component={NoMatch}/>
+    </Route>
+  </Router>
+), document.body);
