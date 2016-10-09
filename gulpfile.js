@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var $    = require('gulp-load-plugins')();
 
 var browserify = require('browserify');
 var reactify = require('reactify');
@@ -11,7 +12,7 @@ var _ = require("lodash");
 var browserSync = require('browser-sync').create();
 
 var paths = {
-	js: ['./dev/js/app.jsx', './dev/js/src/**/*.jsx'],
+	js: ['./dev/js/app.jsx', './dev/js/**/*.jsx'],
 	build_js: ['./dev/js/build/app.js']
 };
 
@@ -30,8 +31,8 @@ function js(watch) {
 
 	var build = function() {
 		return _bundle.bundle()
-			.pipe(source("app.js"))
-			.pipe(gulp.dest("./dev/js/build/"));
+			.pipe(source("bundle.js"))
+			.pipe(gulp.dest("./dev/js/"));
 	}
 	_bundle.on("update", build);
 	return build;
@@ -41,10 +42,25 @@ gulp.task("build", js(false));
 
 gulp.task("watch_js", js(true));
 
+
+// start the server
+// - - - - - - - - - - - - - - -
+
+gulp.task('server',['build'],function(){
+    gulp.src('./dev')
+        .pipe($.webserver({
+            port: 3000,
+            host: 'localhost',
+            fallvack: './dev/index.html',
+            livereload: true,
+            open: true
+        }));
+});
+
 gulp.task("reload", function() {
 	browserSync.init({
 		files: [
-			"./dev/js/build/app.js"
+			"./dev/js/bundle.js"
 		],
 		// logLevel: "debug",
 		logPrefix: "reload",
@@ -58,7 +74,7 @@ gulp.task("reload", function() {
 	});
 });
 
-gulp.task('default', ['build', 'reload', 'watch_js'], function() {
-	// gulp.watch(paths.js,['js']);
+gulp.task('default', ['build', 'server'], function() {
+	gulp.watch(paths.js,['build']);
 	// gulp.watch(paths.build_js).on('change', browserSync.reload);
 });

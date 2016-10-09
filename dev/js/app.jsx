@@ -1,11 +1,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-import { Router, Route, Link, browserHistory ,hashHistory} from 'react-router'
+import { Router, Route, Link, browserHistory ,hashHistory} from 'react-router';
 class Home extends  React.Component {
   render() {
     return (
     	<div>
     		<h1>this is Home</h1>
+        <Link to="/about">about</Link>
     		{this.props.children}
     	</div>
     	
@@ -26,11 +27,11 @@ class NoMatch extends  React.Component {
 };
 
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Home}>
       <Route path="about" component={About}/>
       <Route path="home" component={Home}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>
-), document.body);
+), document.getElementById("example"));
