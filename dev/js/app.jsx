@@ -1,11 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import HelloWorld from "./hello_world.jsx";
 import { Router, Route, Link, browserHistory ,hashHistory} from 'react-router';
 class Home extends  React.Component {
   render() {
     return (
     	<div>
     		<h1>this is Home</h1>
+        <HelloWorld phrase="react" />
         <Link to="/about">about</Link>
     		{this.props.children}
     	</div>

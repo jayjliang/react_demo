@@ -12,13 +12,13 @@ var _ = require("lodash");
 var browserSync = require('browser-sync').create();
 
 var paths = {
-	js: ['./dev/js/app.jsx', './dev/js/**/*.jsx'],
+	js: ['./dev/js/index.jsx', './dev/js/**/*.jsx', './dev/js/*.jsx'],
 	build_js: ['./dev/js/build/app.js']
 };
 
 function js(watch) {
 	var boption = {
-		entries: "./dev/js/app.jsx",
+		entries: "./dev/js/index.jsx",
 		extensions: ['.jsx'],
 		debug: true
 	};
@@ -31,10 +31,15 @@ function js(watch) {
 
 	var build = function() {
 		return _bundle.bundle()
+			.on("error", function(err) {
+				console.log(err);
+			})
 			.pipe(source("bundle.js"))
 			.pipe(gulp.dest("./dev/js/"));
 	}
-	_bundle.on("update", build);
+	if(watch) {
+		_bundle.on("update", build);
+	}
 	return build;
 };
 
