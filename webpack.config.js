@@ -1,14 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
 module.exports = {
-  entry: "./dev/js/index.jsx",
+  entry: {
+    main: "./dev/js/index.jsx",
+    app: "./dev/js/app.jsx"
+  },
   output: {
     path: path.join(__dirname, "/out/js"),
-    filename: "bundle.js",
-    publicPath: "/out/"
+    filename: "[name].bundle.js",
+    chunkFilename: "[name].chunk.js",
+    publicPath: "/out/js/"
   },
   resolve: {
     extensions: [".js", ".jsx"]
+  },
+  performance: {
+    hints: false
   },
   devServer: {
     inline: true,
@@ -33,6 +40,9 @@ module.exports = {
       output: {
         comments: false
       }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ["common", "vendor"]
     })
   ]
 }

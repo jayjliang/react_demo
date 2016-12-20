@@ -11,7 +11,7 @@ class Home extends  React.Component {
         <Link to="/about">about</Link>
     		{this.props.children}
     	</div>
-    	
+
     	);
   }
 };
@@ -28,12 +28,12 @@ class NoMatch extends  React.Component {
   }
 };
 
-ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path="/" component={Home}>
-      <Route path="about" component={About}/>
-      <Route path="home" component={Home}/>
-      <Route path="*" component={NoMatch}/>
-    </Route>
-  </Router>
-), document.getElementById("example"));
+// ReactDOM.render((
+//   <Router history={hashHistory}>
+//     <Route path="/" component={Home}>
+//       <Route path="about" component={About}/>
+//       <Route path="home" component={Home}/>
+//       <Route path="*" component={NoMatch}/>
+//     </Route>
+//   </Router>
+// ), document.getElementById("example"));
