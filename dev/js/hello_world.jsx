@@ -1,10 +1,10 @@
-const React = require("react");
+const React = require('react');
 
 class HelloWorld extends React.Component {
-	render() {
-		return(
-			<h1>Hello from {this.props.phrase}!</h1>
-		)
-	}
+  render() {
+    return (
+      <h1>Hello from {this.props.phrase}!</h1>
+    );
+  }
 }
-export default HelloWorld
+export default HelloWorld;
