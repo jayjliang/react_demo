@@ -9,9 +9,9 @@
     "watch": "webpack-dev-server --inline -p -w --colors",
     "build": "webpack -p --colors"
   },
-  "pre-commit": [
-    "test"
-  ],
+  "precommit.silent": true,
+  "precommit.ignoreBranch": false,
+  "pre-commit": [ "test" ],
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-es2015": "^6.9.0",
@@ -22,7 +22,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
-    "precommit": "^1.2.2",
+    "precommit": "^1.1.3",
     "reactify": "^1.0.0"
   },
   "author": "LiangJ",
