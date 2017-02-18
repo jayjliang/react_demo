@@ -18,7 +18,7 @@ class Home extends  React.Component {
 
 class About extends  React.Component {
   render() {
-    return <h1>this is About</h1>;
+    return <h1>this is About!!</h1>;
   }
 };
 
@@ -27,6 +27,8 @@ class NoMatch extends  React.Component {
   	return <h1>this is NoFound</h1>;
   }
 };
+
+
 
 // ReactDOM.render((
 //   <Router history={hashHistory}>

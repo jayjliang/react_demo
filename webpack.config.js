@@ -10,7 +10,7 @@ module.exports = {
     path: path.join(__dirname, '/out/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
-    publicPath: '/out/js/',
+    publicPath: '/js/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -19,10 +19,10 @@ module.exports = {
     hints: false,
   },
   devServer: {
-    inline: true,
+    // inline: true,
     colors: true,
     progress: true,
-    historyApiFallback: true,
+    // historyApiFallback: true,
   },
   module: {
     loaders: [
