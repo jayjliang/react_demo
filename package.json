@@ -12,7 +12,7 @@
     "server": "babel-node server.js"
   },
   "precommit": [
-    "npm run test1"
+    "npm run test"
   ],
   "devDependencies": {
     "babel-eslint": "^7.1.1",

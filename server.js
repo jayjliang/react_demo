@@ -10,9 +10,6 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
 
-
-
-
 function handleRender(req, res) {
     let init_state = { 
         "todos":[
@@ -42,8 +39,8 @@ function handleRender(req, res) {
 }
 
 function renderFullPage(html, preloadedState) {
-    return `
-        <!DOCTYPE html>
+    return 
+        `<!DOCTYPE html>
         <html>
           <head>
             <meta charset="UTF-8" />
